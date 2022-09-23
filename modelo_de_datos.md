@@ -74,7 +74,7 @@
         recovery_exam: Date,
         final_exam: Date,
     },
-    taught_lessons: Number,
+    total_lessons: Number,
     classroom: {
         access_code: String,
         creation_date: Date,
@@ -95,13 +95,14 @@
     subjects: [{
         data: Subject,
         year: Number,
-        mounth: Number
+        mounths: [String], //january, february... 
+        active: Boolean
     }],
     students: [{
-        user: User,
-        status: String,
+        user: User, 
         start_date: Date,
-        end_date: Date
+        end_date: Date,
+        active: Boolean
     }]
     active: Boolean
 }
@@ -114,18 +115,18 @@
     autor: User,
     creation_date: Date,
     type: String, // public | private
-    classroom: Classroom,
+    classroom: Subject,
     content: {
         header: String,
-        body: String,
+        description: String,
         media: [{
-            type: String,
+            type: String, //img, video
             source: String //uri
         }] 
     }
-    thread: [{
+    comments: [{
         autor: User,
-        comment: String,
+        description: String,
         creation_date: Date,
         active: Boolean
     }]
