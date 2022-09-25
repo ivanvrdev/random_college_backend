@@ -1,5 +1,6 @@
 import bcrypt from 'bcryptjs'
 import User from '../models/user.model.js'
+import { generateJWT } from '../utilities/jwt.js'
 
 const logIn = async (req, res) => {
     const {username, password} = req.body
@@ -8,21 +9,25 @@ const logIn = async (req, res) => {
         const user = await User.findOne({username})
 
         if(!user){
-            res.status(200).json({
+            res.status(401).json({
                 message: 'Usuario no encontrado'
             })
             return
         }
 
         if(!bcrypt.compareSync(password, user.password)){
-            res.status(200).json({
+            res.status(401).json({
                 message: 'Contraseña incorrecta'
             })
             return
         }
 
+        const token = generateJWT({data: user})
+
         res.status(200).json({
-            message: `Bienvenido ${user.username}` 
+            message: `Bienvenido ${user.username}`,
+            user,
+            token
         })
 
     } catch(e) {

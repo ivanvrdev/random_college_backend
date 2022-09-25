@@ -5,7 +5,9 @@ import cors from 'cors'
 import { config } from 'dotenv'
 
 import userRoutes from './routes/user.routes.js'
+
 import logIn from './controllers/login.controller.js'
+import { authenticateUser } from './middlewares/authentication.js'
 
 import './connection.js'
 
@@ -23,6 +25,6 @@ app.set('port', process.env.PORT || 3000)
 
 app.get('/', (req, res) => res.status(200).json({message: '¡Bienvenido al servidor del Instituto Random!'}))
 app.post('/login', logIn)
-app.use('/user', userRoutes)
+app.use('/user', authenticateUser, userRoutes)
 
 app.listen(app.get('port'), ()=>console.log(`Servidor corriendo en el puerto ${app.get('port')}`))
