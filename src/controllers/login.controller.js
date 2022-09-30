@@ -6,7 +6,7 @@ const logIn = async (req, res) => {
     const {username, password} = req.body
 
     try {
-        const user = await User.findOne({username})
+        const user = await User.findOne({username, active: true})
 
         if(!user){
             res.status(401).json({
@@ -22,7 +22,7 @@ const logIn = async (req, res) => {
             return
         }
 
-        const token = generateJWT({data: user})
+        const token = generateJWT({data: {id: user._id}})
 
         res.status(200).json({
             message: `Bienvenido ${user.username}`,

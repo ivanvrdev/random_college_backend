@@ -1,6 +1,7 @@
 import { validateJWT } from "../utilities/jwt.js"
+import User from '../models/user.model.js'
 
-export const authenticateUser = (req, res, next) => {
+export const authenticateUser = async (req, res, next) => {
     const token = req.get('token')
 
     if(!token) {
@@ -19,7 +20,9 @@ export const authenticateUser = (req, res, next) => {
         return
     }
 
-    req.body.user = valid.data
+    const user = await User.findById(valid.data.id)
+
+    req.body.user = user
 
     next()
 }

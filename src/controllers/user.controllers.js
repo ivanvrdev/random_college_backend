@@ -2,10 +2,10 @@ import bcrypt from 'bcryptjs'
 
 import User from '../models/user.model.js'
 
-export const createUser = async (req, res) => {
-    const { username, password, email, phone, types } = req.body
-
+export const createUser = async (req, res) => {    
     try {
+        const { username, password, email, phone, types } = req.body
+
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(password, salt)
 
@@ -47,9 +47,9 @@ export const getUsers = async (req, res) => {
 }
 
 export const updateUser = async (req, res) => {
-    const {id, ...fields} = req.body
-    
     try {
+        const {id, ...fields} = req.body
+
         const updated = await User.findByIdAndUpdate(id, fields, {new: true})
 
         res.status(201).json({
@@ -65,9 +65,9 @@ export const updateUser = async (req, res) => {
 }
 
 export const deleteUser = async (req, res) => {
-    const {id} = req.params
-
     try {
+        const {id} = req.params
+        
         await User.findByIdAndDelete(id)
 
         res.status(201).json({
