@@ -1,10 +1,10 @@
 import { model, Schema } from 'mongoose'
 
 const postSchema = new Schema({
-    autor: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    author: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     creation_date: {type: Date, default: Date.now},
     type: {type: String, required: true}, // public | private
-    classroom: {type: Schema.Types.ObjectId, ref: 'Subject', required: true},
+    classroom: {type: Schema.Types.ObjectId, ref: 'Subject'},
     content: {
         header: {type: String, required: true},
         description: {type: String, required: true},

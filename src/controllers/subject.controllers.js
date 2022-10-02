@@ -35,7 +35,22 @@ export const createSubject = async (req, res) => {
 
 export const getSubjects = async (req, res) => {
     try {
-        const subjects = await Subject.find({active: true})
+
+        const { teacher, student } = req.query
+
+        const filters = {}
+
+        if(teacher) filters.teachers = {$elemMatch: {user: teacher}}
+        if(student) filters.students = {$elemMatch: {user: student}}
+
+        const subjects = await Subject.find({...filters, active: true})
+
+        if(subjects.length < 1) {
+            res.status(404).json({
+                message: 'No se encontró ninguna materia'
+            })
+            return
+        }
 
         res.status(200).json({
             message: 'Lista de materias',
@@ -49,11 +64,37 @@ export const getSubjects = async (req, res) => {
     }
 }
 
+export const getSubjectById = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const subject = await Subject.findById(id)
+
+        if(!subject) {
+            res.status(404).json({
+                message: 'No se encontró ninguna materia'
+            })
+            return
+        }
+
+        res.status(200).json({
+            message: 'Materia encontrada',
+            subject
+        })
+    }catch(e){
+        res.status(400).json({
+            message: 'Error al encontrar materia'
+        })
+        console.log('Error al encontrar materia: ', e)
+    }
+}
+
 export const updateSubject = async (req, res) => {
     try {
-        const {id, ...body} = req.body
+        const { id } = req.params
+        const fields = req.body
 
-        const updated = await Subject.findByIdAndUpdate(id, body, {new: true})
+        const updated = await Subject.findByIdAndUpdate(id, fields, {new: true})
 
         res.status(201).json({
             message: 'Materia actualizada correctamente!',
@@ -69,7 +110,7 @@ export const updateSubject = async (req, res) => {
 
 export const deleteSubject = async (req, res) => {
     try{
-        const {id} = req.body
+        const { id } = req.params
 
         await Subject.findByIdAndDele1e(id)
 

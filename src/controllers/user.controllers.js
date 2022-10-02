@@ -32,7 +32,24 @@ export const createUser = async (req, res) => {
 
 export const getUsers = async (req, res) => {
     try {
-        const users = await User.find({active: true})
+
+        const { username, email, phone, type } = req.query
+
+        const filters = {}
+
+        if(username) filters.username = username
+        if(email) filters.email = email
+        if(phone) filters.phone = phone
+        if(type) filters.types = {$all: [type]}
+
+        const users = await User.find({...filters, active: true})
+
+        if(users.length < 1) {
+            res.status(404).json({
+                message: 'No se encontraron usuarios...',
+            })
+            return
+        }
 
         res.status(200).json({
             message: 'Lista de usuarios',
@@ -46,9 +63,35 @@ export const getUsers = async (req, res) => {
     }
 }
 
+export const getUserById = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const user = await User.findById(id)
+
+        if(!user) {
+            res.status(404).json({
+                message: 'Usuario no encontrado'
+            })
+            return
+        }
+
+        res.status(200).json({
+            message: 'Usuario encontrado',
+            user
+        })
+    } catch(e) {
+        res.status(400).json({
+            message: 'Error al encontrar usuario',
+        })
+        console.log('/src/controllers/user.controllers.js - línea 45: Error al obtener la lista de usuarios: ', e)
+    }
+}
+
 export const updateUser = async (req, res) => {
     try {
-        const {id, ...fields} = req.body
+        const { id } = req.params
+        const fields = req.body
 
         const updated = await User.findByIdAndUpdate(id, fields, {new: true})
 
@@ -66,7 +109,7 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
     try {
-        const {id} = req.params
+        const { id } = req.params
         
         await User.findByIdAndDelete(id)
 

@@ -16,6 +16,7 @@ const degreeSchema = new Schema({
         end_date: Date,
         active: {type: Boolean, default: true}
     }],
+    creation_date: {type: Date, default: Date.now},
     active: {type: Boolean, default: true}
 })
 

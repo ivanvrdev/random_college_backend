@@ -3,14 +3,16 @@ import {
     createSubject, 
     getSubjects, 
     updateSubject, 
-    deleteSubject 
+    deleteSubject, 
+    getSubjectById
 } from "../controllers/subject.controllers.js"
 
 const subjectRoutes = Router()
 
 subjectRoutes.post('/create', createSubject)
 subjectRoutes.get('/list', getSubjects)
-subjectRoutes.put('/update', updateSubject)
-subjectRoutes.delete('/delete',deleteSubject)
+subjectRoutes.get('/:id', getSubjectById)
+subjectRoutes.put('/update/:id', updateSubject)
+subjectRoutes.delete('/delete/:id',deleteSubject)
 
 export default subjectRoutes

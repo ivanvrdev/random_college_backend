@@ -1,10 +1,10 @@
 import { model, Schema } from "mongoose"
 
 const userSchema = new Schema({
-    username: {type: String, required: true},
+    username: {type: String, required: true, unique: true},
     password: {type: String, required: true},
-    email: {type: String, required: true},
-    phone: {type: Number, required: true},
+    email: {type: String, required: true, unique: true},
+    phone: {type: Number, required: true, unique: true},
     types: [{type: String, required: true}], // student | teacher | administrative
     profile: {
         avatar: String, //uri

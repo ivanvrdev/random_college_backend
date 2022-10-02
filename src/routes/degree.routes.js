@@ -1,12 +1,13 @@
 import { Router } from 'express'
 
-import { createDeegre, getDegrees, updateDegree, deleteDeegre} from '../controllers/degree.controllers.js'
+import { createDeegre, getDegrees, updateDegree, deleteDeegre, getDegreeById} from '../controllers/degree.controllers.js'
 
 const degreeRoutes = Router()
 
 degreeRoutes.post('/create', createDeegre)
 degreeRoutes.get('/list', getDegrees)
-degreeRoutes.put('/update', updateDegree)
-degreeRoutes.delete('/delete', deleteDeegre)
+degreeRoutes.get('/:id', getDegreeById)
+degreeRoutes.put('/update/:id', updateDegree)
+degreeRoutes.delete('/delete/:id', deleteDeegre)
 
 export default degreeRoutes

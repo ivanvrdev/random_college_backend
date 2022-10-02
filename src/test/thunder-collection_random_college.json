@@ -1,0 +1,254 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "random_college",
+  "dateExported": "2022-10-02T19:56:35.925Z",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "_id": "912a33ed-d11d-48c2-be17-18d45be31f86",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/user/list",
+      "url": "http://localhost:4000/user/list?type=profesor",
+      "method": "GET",
+      "sortNum": 10000,
+      "created": "2022-10-02T00:18:14.983Z",
+      "modified": "2022-10-02T19:22:41.198Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [{ "name": "type", "value": "profesor", "isPath": false }],
+      "tests": []
+    },
+    {
+      "_id": "fffffdec-2f8a-4140-bbc7-2ca5f4d9cfa2",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/user/create",
+      "url": "http://localhost:4000/user/create",
+      "method": "POST",
+      "sortNum": 20000,
+      "created": "2022-10-02T00:37:14.552Z",
+      "modified": "2022-10-02T16:34:43.422Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDcyODQzNH0.zZwcg4C9gJhz2Q0vwBuSFi_wZqB94JH2x81Ds9l9zJk"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"testuser4\",\n  \"password\": \"112358Ig!\",\n  \"confirmPassword\": \"112358Ig!\",\n  \"email\": \"testuser4@gmail.com\",\n  \"phone\": 3704000007,\n  \"types\": [\"estudiante\"]\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "2b5aac23-0da9-43de-89f2-f05f4e4a4e0b",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/login",
+      "url": "http://localhost:4000/login",
+      "method": "POST",
+      "sortNum": 30000,
+      "created": "2022-10-02T16:38:05.016Z",
+      "modified": "2022-10-02T16:38:05.016Z",
+      "headers": [],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "e61735d6-690d-4467-9891-d46f8697270b",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/degree/list",
+      "url": "http://localhost:4000/degree/list",
+      "method": "GET",
+      "sortNum": 40000,
+      "created": "2022-10-02T18:01:07.405Z",
+      "modified": "2022-10-02T18:01:07.405Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "6cb8cc2b-55b2-4d36-9746-3b1318023b1d",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/degree/create",
+      "url": "http://localhost:4000/degree/create",
+      "method": "POST",
+      "sortNum": 50000,
+      "created": "2022-10-02T18:08:08.421Z",
+      "modified": "2022-10-02T18:08:08.421Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Tecnicatura Superior en Desarrollo de Software\",\n  \"description\": \"Carrera de prueba\",\n  \"duration\": 2,\n  \"boss\": \"6338dc87ffa0eb52d18f8a28\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "4a8685bd-42b1-4914-991e-2346c9abb71d",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/degree/update/6339d37a2b186bfb53ff7da7",
+      "url": "http://localhost:4000/degree/update/6339d3962b186bfb53ff7daa",
+      "method": "PUT",
+      "sortNum": 60000,
+      "created": "2022-10-02T18:24:53.821Z",
+      "modified": "2022-10-02T18:38:08.808Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"students\": [{\"user\": \"63335403091c0079210a2cb7\"}]\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "a50d143d-e694-4b9c-8a26-9e40b0188d0d",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/subject/create",
+      "url": "http://localhost:4000/subject/create",
+      "method": "POST",
+      "sortNum": 70000,
+      "created": "2022-10-02T19:06:09.209Z",
+      "modified": "2022-10-02T19:06:09.209Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"name\": \"Programación\",\n  \"description\": \"Materia de prueba\",\n  \"duration\": \"cuatrimestral\",\n  \"start_date\": \"2022-10-02\",\n  \"end_date\": \"2023-02-01\"\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "edb1987b-5ef9-49b4-abe4-f5bab64921c0",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/subject/list",
+      "url": "http://localhost:4000/subject/list",
+      "method": "GET",
+      "sortNum": 80000,
+      "created": "2022-10-02T19:16:47.320Z",
+      "modified": "2022-10-02T19:16:47.320Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "tests": []
+    },
+    {
+      "_id": "843e50c7-fb7d-45a0-a297-0ac959aca5f9",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/subject/update/6339e106a2901c1e4ba6781a",
+      "url": "http://localhost:4000/subject/update/6339e106a2901c1e4ba6781a",
+      "method": "PUT",
+      "sortNum": 90000,
+      "created": "2022-10-02T19:25:00.840Z",
+      "modified": "2022-10-02T19:25:00.840Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"teachers\": [{\"user\": \"6338dc87ffa0eb52d18f8a28\"}]\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "01b069e0-20c7-4b58-864b-b005ade527fc",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/post/create",
+      "url": "http://localhost:4000/post/create",
+      "method": "POST",
+      "sortNum": 100000,
+      "created": "2022-10-02T19:48:46.822Z",
+      "modified": "2022-10-02T19:48:46.822Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"author\": \"6338dc87ffa0eb52d18f8a28\",\n  \"type\": \"público\",\n  \"content\": {\n    \"header\": \"Hola mundo!\",\n    \"description\": \"Hola mundo...\"\n  }\n}",
+        "form": []
+      },
+      "tests": []
+    },
+    {
+      "_id": "b478e8a3-8434-48f4-bad4-981d621acbd5",
+      "colId": "206d59fb-a372-467e-b276-d695da1547e4",
+      "containerId": "",
+      "name": "http://localhost:4000/post/list?classroom=6339e0faa2901c1e4ba67817",
+      "url": "http://localhost:4000/post/list?classroom=6339e0faa2901c1e4ba67817",
+      "method": "GET",
+      "sortNum": 110000,
+      "created": "2022-10-02T19:54:39.925Z",
+      "modified": "2022-10-02T19:54:39.925Z",
+      "headers": [
+        {
+          "name": "token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7ImlkIjoiNjMyZGM0MDIxMGVmNDRjZTZmYjQwYzJjIn0sImlhdCI6MTY2NDY2OTY0Mn0.JC0quoJlW08dZQhbGW6ShU1_IOkewx85336NOtxdvGY"
+        }
+      ],
+      "params": [
+        {
+          "name": "classroom",
+          "value": "6339e0faa2901c1e4ba67817",
+          "isPath": false
+        }
+      ],
+      "tests": []
+    }
+  ]
+}

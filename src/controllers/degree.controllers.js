@@ -33,7 +33,20 @@ import Degree from '../models/degree.model.js'
 
 export const getDegrees = async (req, res) => {
     try {
-        const degrees = await Degree.find({active: true})
+        const { student } = req.query
+
+        const filters = {}
+
+        if(student) filters.students = {$elemMatch: {user: student}}
+
+        const degrees = await Degree.find({...filters, active: true})
+
+        if(degrees.length < 1) {
+            res.status(404).json({
+                message: 'No se encontró ninguna carrera'
+            })
+            return
+        }
 
         res.status(200).json({
             message: 'Lista de carreras',
@@ -47,11 +60,37 @@ export const getDegrees = async (req, res) => {
     }
 }
 
+export const getDegreeById = async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const degree = await Degree.findById(id)
+
+        if(!degree) {
+            res.status(404).json({
+                message: 'No se encontró ninguna carrera'
+            })
+            return
+        }
+
+        res.status(200).json({
+            message: 'Carrera encontrada',
+            degree
+        })
+    }catch(e){
+        res.status(400).json({
+            message: 'Error al encontrar carrera'
+        })
+        console.log('Error al encontrar carrera: ', e)
+    }
+}
+
 export const updateDegree = async (req, res) => {
     try {
-        const {id, ...body} = req.body
+        const { id } = req.params
+        const fields = req.body
 
-        const updated = await Degree.findByIdAndUpdate(id, body, {new: true})
+        const updated = await Degree.findByIdAndUpdate(id, fields, {new: true})
 
         res.status(201).json({
             message: 'Carrera actualizada correctamente!',
@@ -67,7 +106,7 @@ export const updateDegree = async (req, res) => {
 
 export const deleteDeegre = async (req, res) => {
     try{
-        const {id} = req.body
+        const { id } = req.params
 
         await Degree.findByIdAndDele1e(id)
 
