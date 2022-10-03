@@ -28,7 +28,18 @@ export const createUserValidations = [
     .isLength({max: 16}).withMessage('La longitud máxima es de 16 caracteres')
     .custom(value => validateUnique(User, {phone: value}, 'El número de teléfono ya existe')),
     check('types')
-    .isArray().withMessage('Debe ser una lista. Ejemplo: ["tipo", "otroTipo"]'),
+    .isArray({min: 1, max: 3}).withMessage('Debe ser una lista. Ejemplo: ["tipo", "otroTipo"]'),
     check('types.*')
     .isIn(['admin', 'profesor', 'estudiante']).withMessage('Tipo de usuario no soportado')
+]
+
+export const updateUserValidations = [
+    check('profile.first_name')
+    .if(value => value)
+    .isLength({min: 3}).withMessage('La longitud mínima es de 3 caracteres')
+    .isLength({max: 16}).withMessage('La longitud máxima es de 16 caracteres'),
+    check('profile.last_name')
+    .if(value => value)
+    .isLength({min: 3}).withMessage('La longitud mínima es de 3 caracteres')
+    .isLength({max: 16}).withMessage('La longitud máxima es de 16 caracteres')
 ]

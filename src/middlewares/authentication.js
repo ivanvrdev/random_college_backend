@@ -26,3 +26,10 @@ export const authenticateUser = async (req, res, next) => {
 
     next()
 }
+
+export const authorizeType = (arrayOfTypes) => {
+    return (req, res, next) => {
+        const userTypes = req.user.types
+               
+    }
+}
