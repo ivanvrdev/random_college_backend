@@ -44,6 +44,8 @@ export const getSubjects = async (req, res) => {
         if(student) filters.students = {$elemMatch: {user: student}}
 
         const subjects = await Subject.find({...filters, active: true})
+        .populate('students.user')
+        .populate('teachers.user')
 
         if(subjects.length < 1) {
             res.status(404).json({
@@ -69,6 +71,8 @@ export const getSubjectById = async (req, res) => {
         const { id } = req.params
 
         const subject = await Subject.findById(id)
+        .populate('students.user')
+        .populate('teachers.user')
 
         if(!subject) {
             res.status(404).json({
