@@ -14,7 +14,7 @@ const postSchema = new Schema({
         }] 
     },
     comments: [{
-        autor: {type: Schema.Types.ObjectId ,ref: 'User'},
+        author: {type: Schema.Types.ObjectId ,ref: 'User'},
         description: String,
         creation_date: {type: Date, default: Date.now},
         active: {type: Boolean, default: true}

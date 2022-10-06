@@ -93,6 +93,14 @@ export const updateUser = async (req, res) => {
         const { id } = req.params
         const fields = req.body
 
+        //avatar image uri
+        if(req.file.path) {
+            if(!fields.profile) {
+                fields.profile = {}
+            }
+            fields.profile.avatar = req.file.path
+        }
+
         const updated = await User.findByIdAndUpdate(id, fields, {new: true})
 
         res.status(201).json({

@@ -78,9 +78,12 @@ export const updateUserValidations = [
     validateErrors
 ]
 
-export const userSchema = [
+export const validateUserSchema = [
     checkSchema({
         username: {
+            exists: {
+                errorMessage: 'Debe ingreasar un nombre de usuario'
+            },
             isString: {
                 errorMessage: 'Debe ser de tipo string',
             },
@@ -94,7 +97,62 @@ export const userSchema = [
             custom: {
                 options: value => validateUnique(User, {username: value}, 'El nombre de usuario ya existe')
             }
-        }       
+        },
+        password: {
+            exists:{
+                errorMessage: 'Debe ingreasar una contraseña'                
+            },
+            isStrongPassword: {
+                errorMessage: 'Debe contener al menos 8 caracteres, una minúscula, una mayúscula, un número y un símbolo'
+            },
+            custom: {
+                options: (value, {req}) => comparePasswords(value, req.body.confirmPassword)
+            }
+        },
+        email: {
+            exists: {
+                errorMessage: 'Debe ingresar un correo electrónico'
+            },
+            isEmail: {
+                errorMessage: 'Correo electrónico no válido'
+            },
+            custom: {
+                options: value => validateUnique(User, {email: value}, 'El correo electrónico ya existe')
+            }
+        },
+        phone: {
+            exists: {
+                errorMessage: 'Debe ingresar un número de teléfono'               
+            },
+            isNumeric: {
+                errorMessage: 'Debe ingresar un número de teléfono'
+            },
+            isLength: {
+                errorMessage: 'Debe tener entre 10 y 16 dígitos',
+                options: {
+                    min: 10,
+                    max: 16
+                }               
+            }
+        },
+        types: {
+            isArray: {
+                errorMessage: 'Debe ser una lista de tipos'
+            },
+            isLength: {
+                errorMessage: 'Debe tener al menos un tipo, máximo 3',
+                options: {
+                    min: 1,
+                    max: 3
+                }
+            }
+        },
+        "types.*": {
+            isIn: {
+                errorMessage: 'Tipo no soportado',
+                options: ['estudiante', 'profesor', 'admin']
+            }
+        }              
     }),
     validateErrors
 ]

@@ -43,6 +43,8 @@ export const getPosts = async (req, res) => {
         if(classroom) filters.classroom = classroom
 
         const posts = await Post.find({...filters, active: true})
+        .populate('author')
+        .populate('comments.author')
 
         if(posts.length < 1) {
             res.status(404).json({
@@ -70,6 +72,8 @@ export const getPostById = async (req, res) => {
         const { id } = req.params
 
         const post = await Post.findById(id)
+        .populate('author')
+        .populate('comments.author')
 
         if(!post) {
             res.status(404).json({

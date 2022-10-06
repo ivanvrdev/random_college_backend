@@ -40,6 +40,8 @@ export const getDegrees = async (req, res) => {
         if(student) filters.students = {$elemMatch: {user: student}}
 
         const degrees = await Degree.find({...filters, active: true})
+        .populate('subjects.data')
+        .populate('students.user')
 
         if(degrees.length < 1) {
             res.status(404).json({
@@ -65,6 +67,8 @@ export const getDegreeById = async (req, res) => {
         const { id } = req.params
 
         const degree = await Degree.findById(id)
+        .populate('subjects.data')
+        .populate('students.user')
 
         if(!degree) {
             res.status(404).json({
