@@ -94,7 +94,7 @@ export const updateUser = async (req, res) => {
         const fields = req.body
 
         //avatar image uri
-        if(req.file.path) {
+        if(req.file?.path) {
             if(!fields.profile) {
                 fields.profile = {}
             }

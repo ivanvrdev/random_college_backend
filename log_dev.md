@@ -6,3 +6,4 @@
 4. 28-09-2022: **_endpoints de carreras_**: Creación de endpoints de carreras. 
 5. 28-09-2022: **_endpoints de publicaciones_**: Creación de endpoints de publicaciones. 
 6. 02-10-2022: **_validaciones y endpoints_**: Incorporación de validaciones para crear usuarios, uso de queries en endpoints tipo GET de todos los modelos y testeo de los mismos.
+7. 06-10-2022: **_subida de imágenes_**: Uso del servicio de cloudinary y del middleware multer.
