@@ -101,6 +101,12 @@ export const updateUser = async (req, res) => {
             fields.profile.avatar = req.file.path
         }
 
+        if(fields.password){
+            const salt = bcrypt.genSaltSync(10)
+            const hash = bcrypt.hashSync(fields.password, salt)
+            fields.password = hash
+        }
+
         const updated = await User.findByIdAndUpdate(id, fields, {new: true})
 
         res.status(201).json({

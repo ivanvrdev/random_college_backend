@@ -9,15 +9,17 @@ const logIn = async (req, res) => {
         const user = await User.findOne({username, active: true})
 
         if(!user){
-            res.status(401).json({
-                message: 'Usuario no encontrado'
+            res.status(404).json({
+                message: 'Usuario no encontrado',
+                type: 'danger'
             })
             return
         }
 
         if(!bcrypt.compareSync(password, user.password)){
             res.status(401).json({
-                message: 'Contraseña incorrecta'
+                message: 'Contraseña incorrecta',
+                type: 'danger'
             })
             return
         }
@@ -26,6 +28,7 @@ const logIn = async (req, res) => {
 
         res.status(200).json({
             message: `Bienvenido ${user.username}`,
+            type: 'success',
             user,
             token
         })
