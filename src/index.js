@@ -8,9 +8,8 @@ import userRoutes from './routes/user.routes.js'
 import subjectRoutes from './routes/subject.routes.js'
 import degreeRoutes from './routes/degree.routes.js'
 import postRoutes from './routes/post.routes.js'
+import authRoutes from './routes/auth.routes.js'
 
-import logIn from './controllers/login.controller.js'
-import logInValidations from './middlewares/logIn.middlewares.js'
 import { authenticateUser } from './middlewares/customMiddlewares.js'
 
 import './connection.js'
@@ -28,7 +27,7 @@ app.use(express.urlencoded({extended: false}))
 app.set('port', process.env.PORT || 3000)
 
 app.get('/', (req, res) => res.status(200).json({message: '¡Bienvenido al servidor del Instituto Random!'}))
-app.post('/login', logInValidations, logIn)
+app.use('/auth', authRoutes)
 app.use('/user', authenticateUser, userRoutes)
 app.use('/subject', authenticateUser, subjectRoutes)
 app.use('/degree', authenticateUser, degreeRoutes)
