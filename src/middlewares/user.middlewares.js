@@ -5,7 +5,11 @@ import User from '../models/user.model.js'
 
 //para datos que se validan sí o sí al crear el usuario 
 //o si existen al momento de hacer una modificación 
-const condition = (value, {req}) => req.path === '/create' || value
+const condition = (value, {req}) => {
+  // console.log( value ? req.path === '/create' : value)
+  // revisar
+  // return value && req.path === '/create'
+}
 
 export const userValidations = [
     check('username')
@@ -37,7 +41,7 @@ export const userValidations = [
     .isArray({min: 1, max: 3}).withMessage('Debe ser una lista. Ejemplo: ["tipo", "otroTipo"]'),
     check('types.*')
     .if(condition)
-    .isIn(['admin', 'profesor', 'estudiante']).withMessage('Tipo de usuario no soportado'),
+    .isIn(['administrador', 'profesor', 'estudiante']).withMessage('Tipo de usuario no soportado'),
 //     check('profile.avatar')
 //     .if(value => value)
 //     .isURL().withMessage('Formato no válido'),

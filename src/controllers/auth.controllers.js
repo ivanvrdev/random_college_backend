@@ -65,6 +65,6 @@ export const logInByToken = async (req, res) => {
 
   } catch(error) {
     res.status(400).json(errorResponse)
-    console.log(error)
+    console.log('Error al autenticar token: ', error)
   }
 } 
