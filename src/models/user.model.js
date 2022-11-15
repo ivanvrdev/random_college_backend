@@ -20,12 +20,13 @@ const userSchema = new Schema({
             street_name: String,
             number: String,
             floor: Number,
-            apartment: Number
+            apartment: Number,
+            active: {type: Boolean, default: true}
         }],
         documents: [{
             description: String,
             uri: String,
-            active: Boolean
+            active: {type: Boolean, default: true}
         }],
     },
     classrooms: [{type: Schema.Types.ObjectId, ref: 'Subject'}],

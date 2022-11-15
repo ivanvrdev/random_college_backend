@@ -7,13 +7,13 @@ import { upload } from "../middlewares/uploadFiles.js"
 
 const userRoutes = Router()
 
-userRoutes.post('/create', authorizeAdminOnly, userValidations, createUser)
+userRoutes.post('/create', authorizeAdminOnly, createUser)
 userRoutes.get('/list', getUsers)
 userRoutes.get('/:id', getUserById)
 userRoutes.put(
     '/update/:id', 
-    authorizeUpdateUser, 
-    userValidations, 
+    // authorizeUpdateUser, 
+    // userValidations, 
     upload.single('avatar'),
     updateUser
 )

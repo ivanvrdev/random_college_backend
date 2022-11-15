@@ -46,6 +46,7 @@ export const getSubjects = async (req, res) => {
         const subjects = await Subject.find({...filters, active: true})
         .populate('students.user')
         .populate('teachers.user')
+        .populate('degrees')
 
         if(subjects.length < 1) {
             res.status(404).json({
