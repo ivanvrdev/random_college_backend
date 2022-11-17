@@ -74,6 +74,7 @@ export const getSubjectById = async (req, res) => {
         const subject = await Subject.findById(id)
         .populate('students.user')
         .populate('teachers.user')
+        .populate('degrees')
 
         if(!subject) {
             res.status(404).json({
