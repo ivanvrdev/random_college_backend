@@ -10,6 +10,8 @@ import degreeRoutes from './routes/degree.routes.js'
 import postRoutes from './routes/post.routes.js'
 import authRoutes from './routes/auth.routes.js'
 
+import { getPublicPosts } from './controllers/post.controllers.js'
+
 import { authenticateUser } from './middlewares/customMiddlewares.js'
 
 import './connection.js'
@@ -32,5 +34,6 @@ app.use('/user', authenticateUser, userRoutes)
 app.use('/subject', authenticateUser, subjectRoutes)
 app.use('/degree', authenticateUser, degreeRoutes)
 app.use('/post', authenticateUser, postRoutes)
+app.use('/public/post', getPublicPosts)
 
 app.listen(app.get('port'), ()=>console.log(`Servidor corriendo en el puerto ${app.get('port')}`))

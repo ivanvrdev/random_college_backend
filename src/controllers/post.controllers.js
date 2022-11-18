@@ -31,6 +31,31 @@ export const createPost = async (req, res) => {
     }
 }
 
+export const getPublicPosts = async (req, res) => {
+  try{
+    const posts = await Post.find({type: 'público'})
+    .populate('author')
+    .populate('comments.author')
+  
+    if(posts.length < 1) {
+      res.status(404).json({
+          message: 'No se ha encontrado ninguna publicación'
+      })
+      return
+    }
+  
+    res.status(200).json({
+      message: 'Lista de publicaciones',
+      posts
+    })
+  }catch(error){
+    res.status(400).json({
+      message: 'Error al obtener la lista de publicaciones'
+    })
+    console.log('Error al obtener la lista de publicaciones: ', error)
+  }
+}
+
 export const getPosts = async (req, res) => {
     try {
 
