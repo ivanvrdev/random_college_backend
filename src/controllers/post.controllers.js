@@ -20,12 +20,14 @@ export const createPost = async (req, res) => {
         await newPost.save()
 
         res.status(201).json({
-            message: 'Publicación creado correctamente!'
+          message: 'Publicación creada correctamente!',
+          type: 'success'
         })
 
     } catch(e) {
         res.status(400).json({
-            message: 'Error al crear publicación...'
+          message: 'Error al crear publicación...',
+          type: 'danger'
         })
         console.log('Error al crear publicación: ', e)
     }
@@ -129,11 +131,13 @@ export const updatePost = async (req, res) => {
 
         res.status(201).json({
             message: 'Publicación actualizado correctamente!',
-            post: updated
+            post: updated,
+            type: 'success'
         })
     } catch(e) {
         res.status(400).json({
-            message: 'Error al actualizar publicación...'
+            message: 'Error al actualizar publicación...',
+            type: 'error'
         })
         console.log('Error al actualizar publicación: ', e)
     }
@@ -146,11 +150,13 @@ export const deletePost = async (req, res) => {
         await Post.findByIdAndDele1e(id)
 
         res.status(201).json({
-            message: 'Publicación eliminado correctamente!'
+            message: 'Publicación eliminado correctamente!',
+            type: 'success'
         })
     }catch(e){
         res.status(400).json({
-            message:  'Error al eliminar publicación...'
+            message:  'Error al eliminar publicación...',
+            type: 'danger'
         })
         console.log('Error al eliminar publicación: ', e)
     }
