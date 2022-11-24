@@ -92,7 +92,9 @@ export const updateUser = async (req, res) => {
     try {
         const { id } = req.params
         const fields = req.body
-
+        
+        // console.log(fields)
+        if(typeof fields.profile === 'string') fields.profile = JSON.parse(fields.profile) 
         //avatar image uri
         if(req.file?.path) {
             if(!fields.profile) {
