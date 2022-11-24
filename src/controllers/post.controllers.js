@@ -17,11 +17,12 @@ export const createPost = async (req, res) => {
             content
         })
 
-        await newPost.save()
+        const created = await (await newPost.save()).populate('author')
 
         res.status(201).json({
           message: 'Publicación creada correctamente!',
-          type: 'success'
+          type: 'success',
+          post: created
         })
 
     } catch(e) {
@@ -126,8 +127,11 @@ export const updatePost = async (req, res) => {
         const { id } = req.params
 
         const fields = req.body
+        // console.log(fields)
 
         const updated = await Post.findByIdAndUpdate(id, fields, {new: true})
+        .populate('author')
+        .populate('comments.author')
 
         res.status(201).json({
             message: 'Publicación actualizado correctamente!',
